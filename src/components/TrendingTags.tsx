@@ -9,6 +9,8 @@ interface State {
 
 export default class TrendingTags extends Component <Props, State> {
   
+  _isMounted = false
+
   constructor (props: Props) {
     super(props)
     this.state = {
@@ -17,7 +19,15 @@ export default class TrendingTags extends Component <Props, State> {
   } 
 
   async componentDidMount () {
-    this.setState({ tags: await getTags()})
+    this._isMounted = true
+    const tags = await getTags()
+    if (this._isMounted === true) { 
+      this.setState({ tags })
+    }
+  }
+
+  componentWillUnmount () {
+    this._isMounted = false
   }
 
   render() {
