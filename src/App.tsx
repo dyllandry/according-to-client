@@ -2,7 +2,9 @@ import React, {
   Component
 } from 'react';
 import './App.css';
-import TrendingTags from './components/TrendingTags';
+import Header from './components/Header';
+import Home from './components/Home'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 interface State {}
 
@@ -12,10 +14,10 @@ class App extends Component<Props, State> {
 
   render () {
     return (
-      <div>
-          <h1>Hello, world!</h1>
-          <TrendingTags />
-      </div>
+      <Router>
+        <Header />
+        <Route path='/' exact component={Home} />
+      </Router>
     )
   }
 
