@@ -28,5 +28,19 @@ export const GraphQLQueries = {
       name
       weight
     }
-  }`
+  }`,
+  getPostSummaries: `{
+    posts {
+      title
+      description
+      author {
+        displayName
+      }
+      createdAt
+      tags {
+        name
+      }
+    }
+  }
+  `
 }
