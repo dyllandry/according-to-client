@@ -6,11 +6,7 @@ import Header from './components/Header';
 import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-interface State {}
-
-interface Props {}
-
-class App extends Component<Props, State> {  
+class App extends Component {  
 
   render () {
     return (
