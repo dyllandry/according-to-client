@@ -25,8 +25,12 @@ describe('TrendingTags component', () => {
       const getTagsFake = sinon.fake.resolves(tags)
       sinon.replace(Tag, 'getTags', getTagsFake)
       const { getByText } = render(<TrendingTags />)
-      await wait(() => getByText(tags[0].name))
-      expect(getByText(tags[0].name)).toBeVisible()
+      await wait(() => getByText(tags[0].name, { exact: false }))
+      tags.forEach(tag => {
+        expect(getByText(tag.name, {
+          exact: false
+        })).toBeVisible()
+      })
     })
     
 })

@@ -35,7 +35,7 @@ export default class TrendingTags extends Component <Props, State> {
       <div>
         <ol>
           { this.state.tags.map(tag => {
-            return <li key={tag._id}>#{ tag.name }</li>
+            return <li key={tag._id}>{`#${tag.name}`}</li>
           })}
         </ol>  
       </div>
