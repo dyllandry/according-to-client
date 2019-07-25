@@ -32,7 +32,7 @@ export default class TrendingTags extends Component <Props, State> {
 
   render() {
     return (
-      <div>
+      <div data-testid='trending-tags'>
         <h2>Trending</h2>
         <ol>
           { this.state.tags.map(tag => {
