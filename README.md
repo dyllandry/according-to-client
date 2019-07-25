@@ -1,3 +1,14 @@
+# 🌎 According To
+**According To** (AT) is blog prototype where people can share their takes on world events. 
+
+However, first and foremost, it is a portfolio project of mine ([Dylan Landry](https://www.dylanlandry.com)) to demonstrate that I am competent with React and test driven development. 
+
+This is specifically the AT _client_.
+
+The following is the create-react-app boiler readme.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
