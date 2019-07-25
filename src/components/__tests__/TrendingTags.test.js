@@ -32,5 +32,13 @@ describe('TrendingTags component', () => {
         })).toBeVisible()
       })
     })
+
+    it('displays list with trending header', () => {
+      const expected = 'Trending'
+      const getTagsFake = sinon.fake.resolves([])
+      sinon.replace(Tag, 'getTags', getTagsFake)
+      const { getByText } = render(<TrendingTags />)
+      expect(getByText(expected)).toBeVisible()
+    })
     
 })
