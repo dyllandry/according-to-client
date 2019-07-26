@@ -50,7 +50,7 @@ export const GraphQLQueries = {
     }
   }
   `,
-  getPost: `{
+  getPostById: `{
     post(id: $id) {
       id
       title

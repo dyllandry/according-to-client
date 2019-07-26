@@ -7,6 +7,16 @@ import { Tag, getFakeTag } from './Tag';
 import { Author, getFakeAuthor } from './Author';
 import getUid from '../uid';
 
+export interface Post {
+  id: string
+  title: string
+  description: string
+  body: string
+  author: Author
+  tags: Tag[]
+  createdAt: string
+}
+
 export interface PostSummary {
   _id: string
   title: string
@@ -14,6 +24,22 @@ export interface PostSummary {
   createdAt: number
   tags: Tag[]
   Author: Author
+}
+
+/**
+ * Helper for requesting a post.
+ * @param {string} id Id to get post by.
+ * @returns {Post} A post.
+ */
+export async function getPostById (id: string): Promise<Post> {
+  // NOTE: Not testing, only implementation details.
+  const request = GraphQLRequest(
+    GraphQLQueries.getPostById, 
+    { variables: { id } }
+  )
+  const response = await fetch(request)
+  const json = await response.json()
+  return json.data.post
 }
 
 /**
