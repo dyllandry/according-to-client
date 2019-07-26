@@ -14,7 +14,7 @@ export interface Post {
   body: string
   author: Author
   tags: Tag[]
-  createdAt: string
+  createdAt: number
 }
 
 export interface PostSummary {
@@ -66,5 +66,25 @@ export function getFakePostSummary (): PostSummary {
     createdAt: Date.now(),
     tags: [getFakeTag()],
     Author: getFakeAuthor()
+  }
+}
+
+/**
+ * Helper creates a fake post.
+ * @returns {Post}
+ */
+export function getFakePost ({
+  id = getUid()
+} : {
+  id?: string
+} = {}): Post {
+  return {
+    id,
+    title: 'Fake Post',
+    description: 'Description of fake post.',
+    body: 'Body of fake post.',
+    author: getFakeAuthor(),
+    tags: [getFakeTag()],
+    createdAt: Date.now()
   }
 }
