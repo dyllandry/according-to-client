@@ -40,7 +40,7 @@ export default class Feed extends Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <div data-testid='feed'>
         <h2 data-testid="feed-header">Feed</h2>
         { 
           this.state.loadingPosts ? (
