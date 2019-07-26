@@ -15,13 +15,10 @@ describe('TrendingTags component', () => {
     })
   
     it('renders tags', async () => {
-      const tags = [{
-          _id: '1',
-          name: 'apple',
-        }, {
-          _id: '2',
-          name: 'banana',
-      }]
+      const tags = [
+        Tag.getFakeTag(),
+        Tag.getFakeTag()
+      ]
       const getTagsFake = sinon.fake.resolves(tags)
       sinon.replace(Tag, 'getTags', getTagsFake)
       const { getByText } = render(<TrendingTags />)

@@ -2,6 +2,7 @@ import {
   GraphQLRequest,
   GraphQLQueries
 } from '../api'
+import getUid from '../uid';
 
 export interface Tag {
   _id: string
@@ -19,4 +20,17 @@ export async function getTags(): Promise<Tag[]> {
   const response = await fetch(request)
   const json = await response.json()
   return json.data.tags
+}
+
+/**
+ * Helper that creates a fake tag.
+ * @returns {Tag} The fake tag.
+ */
+export function getFakeTag () {
+  const uid = getUid()
+  return {
+    _id: uid,
+    name: `Fake Tag ${uid}`,
+    weight: 1
+  }
 }

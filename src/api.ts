@@ -31,6 +31,7 @@ export const GraphQLQueries = {
   }`,
   getPostSummaries: `{
     posts {
+      _id
       title
       description
       author {
