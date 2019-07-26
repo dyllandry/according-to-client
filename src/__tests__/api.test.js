@@ -12,7 +12,10 @@ describe('api', () => {
 
       it('contains passed url', () => {
         const expected = 'http://url'
-        const graphQLGetRequest = GraphQLRequest('{ posts }', expected)
+        const graphQLGetRequest = GraphQLRequest(
+          '{ posts }', 
+          { graphQLEndpoint: expected }
+        )
         
         graphQLGetRequest.url.should.equal(expected)
       })
@@ -31,6 +34,16 @@ describe('api', () => {
       it('contains POST http method', () => {
         const request = GraphQLRequest('{ posts }')
         request.method.should.equal('POST')
+      })
+
+      it('contains variables in body', async () => {
+        const expected = { id: 'abc'}
+        const request = GraphQLRequest(
+          'query',
+          { variables: expected }
+        )
+        const bodyJson = await request.json()
+        bodyJson.variables.should.deep.equal(expected)
       })
 
     })

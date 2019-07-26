@@ -7,14 +7,20 @@
  */
 export function GraphQLRequest (
   query: string,
-  graphQLEndpoint: string = process.env.REACT_APP_GRAPHQL_ENDPOINT || ''
+  {
+    variables,
+    graphQLEndpoint = process.env.REACT_APP_GRAPHQL_ENDPOINT || ''
+  }: {
+    variables?: object
+    graphQLEndpoint?: string
+  } = {}
 ): Request {
   return new Request(graphQLEndpoint, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ query })
+    body: JSON.stringify({ query, variables })
   })
 }
 
@@ -43,5 +49,22 @@ export const GraphQLQueries = {
       }
     }
   }
-  `
+  `,
+  getPost: `{
+    post(id: $id) {
+      id
+      title
+      description
+      body
+      author {
+        id
+        displayName
+      }
+      tags {
+        id
+        name
+      }
+      createdAt
+    }
+  }`
 }
