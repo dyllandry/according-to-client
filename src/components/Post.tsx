@@ -63,8 +63,8 @@ export default class Post extends Component<Props, State> {
     return (
       <div>
         <h1 data-testid='post-title'>{title}</h1>
-        <h1 data-testid='post-description'>{description}</h1>
-        <h1 data-testid='post-body'>{body}</h1>
+        <p data-testid='post-description'>{description}</p>
+        <div data-testid='post-body'>{body}</div>
       </div>
     )
   }
