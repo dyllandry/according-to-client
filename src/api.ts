@@ -50,7 +50,7 @@ export const GraphQLQueries = {
     }
   }
   `,
-  getPostById: `{
+  getPostById: `query getPostById($id: ID!) {
     post(id: $id) {
       id
       title
