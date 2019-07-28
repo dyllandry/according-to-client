@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node download-schema.js && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,6 +42,10 @@
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.6",
     "chai": "^4.2.0",
+    "dotenv": "^8.0.0",
+    "easygraphql-tester": "^5.1.6",
+    "get-graphql-schema": "^2.1.2",
+    "graphql-tag-pluck": "^0.8.3",
     "sinon": "^7.3.2",
     "ts-jest": "^24.0.2"
   }

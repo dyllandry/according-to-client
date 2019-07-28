@@ -5,6 +5,21 @@ However, first and foremost, it is a portfolio project of mine ([Dylan Landry](h
 
 This is specifically the AT _client_.
 
+## Install
+- `npm install`
+
+## Environment Variables
+Make sure to tweak the variables contained by the `.env` file to your environment's specifications.
+
+## Testing
+A focus of this project is test driven development. That is, I only develop features after I have first defined adequate test for them. The tests are contained by `src` subdirectories named `__tests__`.
+
+To test the application, run `npm run test`.
+
+**Warning**: GraphQL queries are also tested for validity against the GraphQL server's schema. Before `npm run test` is executed, the GraphQL schema is downloaded. This download occurs from the url specified by the `REACT_APP_GRAPHQL_ENDPOINT` environment variable detailed by the `.env` file. If this variable is not set, or downloading the GraphQL schema fails, the tests will not run. Testing requires a fresh GraphQL schema first be downloaded to ensure no tests are stale.
+
+---
+
 The following is the create-react-app boiler readme.
 
 ---

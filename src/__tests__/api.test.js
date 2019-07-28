@@ -1,8 +1,15 @@
 import { 
-  GraphQLRequest
+  GraphQLRequest, GraphQLQueries
  } from '../api'
-// eslint-disable-next-line no-unused-vars
-const should = require('chai').should()
+ import fs from 'fs';
+ import path from 'path'
+ // eslint-disable-next-line no-unused-vars
+ const should = require('chai').should()
+ 
+ const schemaPath = path.join(__dirname, '..', '..', 'schema.graphql')
+ const schemaFile = fs.readFileSync(schemaPath, 'utf8')
+ const EasyGraphQLTester = require('easygraphql-tester')
+ const graphQLTester = new EasyGraphQLTester(schemaFile)
 
 describe('api', () => {
   
@@ -48,6 +55,24 @@ describe('api', () => {
 
     })
 
+  })
+
+  describe('GraphQLQueries', () => {
+
+    it('getTags is valid', () => {
+      graphQLTester.test(true, GraphQLQueries.getTags)
+    })
+
+    it('getPostSummaries is valid', () => {
+      graphQLTester.test(true, GraphQLQueries.getPostSummaries)
+    })
+
+    it('getPostId is valid', () => {
+      graphQLTester.test(true, GraphQLQueries.getPostById, {
+        id: '123'
+      })
+    })
+    
   })
 
 })
