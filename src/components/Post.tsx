@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Post as PostType, getPostById } from '../models/Post'
+const showdown = require('showdown')
+const converter = new showdown.Converter()
 
 interface Props {
   id: string
@@ -64,7 +66,7 @@ export default class Post extends Component<Props, State> {
       <div>
         <h1 data-testid='post-title'>{title}</h1>
         <p data-testid='post-description'>{description}</p>
-        <div data-testid='post-body'>{body}</div>
+        <div data-testid='post-body' dangerouslySetInnerHTML={{ __html: converter.makeHtml(body)}}></div>
       </div>
     )
   }

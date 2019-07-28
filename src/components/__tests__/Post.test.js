@@ -1,8 +1,11 @@
 import React from 'react'
 import { stub } from 'sinon'
-import { render, wait, waitForElementToBeRemoved } from '@testing-library/react'
+import { render, wait, waitForElementToBeRemoved, waitForDomChange } from '@testing-library/react'
 import * as PostModel from '../../models/Post'
 import Post from '../Post'
+import showdown from 'showdown'
+
+const converter = new showdown.Converter()
 
 describe('post component', () => {
 
@@ -54,7 +57,9 @@ describe('post component', () => {
     const { getByTestId } = render(<Post id='123'/>)
     await wait(() => getByTestId('post-body'))
     expect(getByTestId('post-body')).toBeVisible()
-    expect(getByTestId('post-body')).toHaveTextContent(fakePost.body)
+    waitForDomChange({ container: getByTestId('post-body') }).then(() => {
+      expect(getByTestId('post-body')).toHaveTextContent(converter.makeHtml(fakePost.body))
+    })
   })
   
 })
