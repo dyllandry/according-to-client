@@ -4,6 +4,7 @@ import { render, wait, waitForElementToBeRemoved, waitForDomChange } from '@test
 import * as PostModel from '../../models/Post'
 import Post from '../Post'
 import showdown from 'showdown'
+import { getAuthorPictureAltText } from '../../getAuthorPictureAltText'
 
 const converter = new showdown.Converter()
 
@@ -13,7 +14,7 @@ describe('post component', () => {
   const fakePost = PostModel.getFakePost('123')
 
   beforeEach(() => {
-    getPostByIdStub.resolves(null)
+    getPostByIdStub.resolves(fakePost)
   })
 
   it('renders without crashing', () => {
@@ -31,13 +32,13 @@ describe('post component', () => {
   })
 
   it('renders message when post loading failed', async () => {
+    getPostByIdStub.resolves(null)
     const { getByTestId } = render (<Post />)
     await wait(() => getByTestId('post-loading-failed'))
     expect(getByTestId('post-loading-failed')).toBeVisible()
   })
 
   it('renders post title', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByTestId } = render(<Post id='123'/>)
     await wait(() => getByTestId('post-title'))
     expect(getByTestId('post-title')).toBeVisible()
@@ -45,7 +46,6 @@ describe('post component', () => {
   })
 
   it('renders post description', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByTestId } = render(<Post id='123'/>)
     await wait(() => getByTestId('post-description'))
     expect(getByTestId('post-description')).toBeVisible()
@@ -53,7 +53,6 @@ describe('post component', () => {
   })
 
   it('renders post body', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByTestId } = render(<Post id='123'/>)
     await wait(() => getByTestId('post-body'))
     expect(getByTestId('post-body')).toBeVisible()
@@ -63,7 +62,6 @@ describe('post component', () => {
   })
 
   it('renders post author', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByText } = render(<Post />)
     await wait(() => getByText(fakePost.title))
     expect(getByText(fakePost.author.displayName, {
@@ -72,7 +70,6 @@ describe('post component', () => {
   })
 
   it('renders post tags', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByText } = render(<Post />)
     await wait(() => getByText(fakePost.title))
     fakePost.tags.forEach(tag => {
@@ -83,7 +80,6 @@ describe('post component', () => {
   })
 
   it('renders post date', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByText } = render(<Post />)
     await wait(() => getByText(fakePost.title))
     const postDate = new Date(fakePost.createdAt)
@@ -92,10 +88,16 @@ describe('post component', () => {
   })
 
   it('renders post cover alt text', async () => {
-    getPostByIdStub.resolves(fakePost)
     const { getByAltText } = render(<Post />)
     await wait(() => getByAltText(fakePost.coverAlt))
     expect(getByAltText(fakePost.coverAlt)).toBeVisible()
+  })
+
+  it('renders author picture alt text', async () => {
+    const { getByAltText } = render(<Post />)
+    const expected = getAuthorPictureAltText(fakePost.author.displayName)
+    await wait(() => getByAltText(expected))
+    expect(getByAltText(expected)).toBeVisible()
   })
   
 })

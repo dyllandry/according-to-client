@@ -3,6 +3,7 @@ import { PostSummary as PostSummaryType } from '../models/Post'
 import { Link } from 'react-router-dom';
 import { getLocalProviderImageUrl } from '../getProviderImageUrl';
 import { CmsUrlContext } from '../Context'
+import { getAuthorPictureAltText } from '../getAuthorPictureAltText'
 
 export default function PostSummary({
   id,
@@ -30,7 +31,21 @@ export default function PostSummary({
         />
       )}
       <div>{dayMonthYear}</div>
-      <div>{author && author.displayName}</div>
+      {author && (
+        <div>
+          {author.picture && cmsUrl && (
+            <img 
+              src={author.picture.provider === 'local'
+                ? getLocalProviderImageUrl(cmsUrl, author.picture.url)
+                : author.picture.url
+              }
+              alt={getAuthorPictureAltText(author.displayName)}
+            />
+          )}
+          <div>{author.displayName}</div>
+        </div>
+      )}
+      
       <h3 data-testid='post-summary-title'>
         <Link data-testid='post-summary-link' to={`/post/${id}`}>
           {title}

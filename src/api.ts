@@ -42,6 +42,10 @@ export const GraphQLQueries = {
       description
       author {
         displayName
+        picture {
+          provider
+          url
+        }
       }
       createdAt
       tags {
@@ -64,6 +68,10 @@ export const GraphQLQueries = {
       author {
         id
         displayName
+        picture {
+          url
+          provider
+        }
       }
       tags {
         id

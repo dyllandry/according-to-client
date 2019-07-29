@@ -1,5 +1,11 @@
 export interface Author {
   displayName: string
+  picture: Picture
+}
+
+export interface Picture {
+  url: string,
+  provider: string
 }
 
 /**
@@ -8,6 +14,10 @@ export interface Author {
  */
 export function getFakeAuthor () {
   return {
-    displayName: 'Dylan Landry'
+    displayName: 'Dylan Landry',
+    picture: {
+      url: 'http://fakeurl.com',
+      provider: 'local'
+    }
   }
 }

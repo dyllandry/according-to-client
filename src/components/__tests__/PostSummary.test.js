@@ -7,6 +7,7 @@ import Post from '../Post'
 import { Route } from 'react-router-dom'
 import { stub } from 'sinon'
 import * as PostModel from '../../models/Post'
+import { getAuthorPictureAltText } from '../../getAuthorPictureAltText'
 
 describe('post summary component', () => {
 
@@ -73,11 +74,17 @@ describe('post summary component', () => {
     it('renders post author', async () => {
       const fakePostSummary = getFakePostSummary()
       const { getByText } = renderWithRouter(<PostSummary {...fakePostSummary} />)
-      console.log(fakePostSummary.author)
       await wait(() => getByText(fakePostSummary.author.displayName))
       expect(getByText(fakePostSummary.author.displayName)).toBeVisible()
     })
   
+    it('renders author picture alt text', async () => {
+      const fakePostSummary = getFakePostSummary()
+      const { getByAltText } = renderWithRouter(<PostSummary {...fakePostSummary} />)
+      const expected = getAuthorPictureAltText(fakePostSummary.author.displayName)
+      await wait(() => getByAltText(expected))
+      expect(getByAltText(expected)).toBeVisible()
+    })
 
   })
   
