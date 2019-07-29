@@ -61,5 +61,34 @@ describe('post component', () => {
       expect(getByTestId('post-body')).toHaveTextContent(converter.makeHtml(fakePost.body))
     })
   })
+
+  it('renders post author', async () => {
+    getPostByIdStub.resolves(fakePost)
+    const { getByText } = render(<Post />)
+    await wait(() => getByText(fakePost.title))
+    expect(getByText(fakePost.author.displayName, {
+      exact: false
+    })).toBeVisible()
+  })
+
+  it('renders post tags', async () => {
+    getPostByIdStub.resolves(fakePost)
+    const { getByText } = render(<Post />)
+    await wait(() => getByText(fakePost.title))
+    fakePost.tags.forEach(tag => {
+      expect(getByText(tag.name, {
+        exact: false
+      })).toBeVisible()
+    })
+  })
+
+  it('renders post date', async () => {
+    getPostByIdStub.resolves(fakePost)
+    const { getByText } = render(<Post />)
+    await wait(() => getByText(fakePost.title))
+    const postDate = new Date(fakePost.createdAt)
+    const dayMonthYear = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
+    expect(getByText(dayMonthYear)).toBeVisible()
+  })
   
 })

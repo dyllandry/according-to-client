@@ -59,12 +59,24 @@ export default class Post extends Component<Props, State> {
     const {
       title,
       description,
-      body
+      body,
+      author,
+      tags,
+      cover,
+      createdAt
     } = this.state.post
+
+    const postDate = new Date(createdAt)
+    const dayMonthYear = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
 
     return (
       <div>
         <h1 data-testid='post-title'>{title}</h1>
+        <div>By: {author.displayName}</div>
+        <div>{`By: ${author.displayName} on ${dayMonthYear}`}</div>
+        <ul>
+          {tags.map(tag => <li key={tag._id}>{`#${tag.name}`}</li>)}
+        </ul>
         <p data-testid='post-description'>{description}</p>
         <div data-testid='post-body' dangerouslySetInnerHTML={{ __html: converter.makeHtml(body)}}></div>
       </div>
