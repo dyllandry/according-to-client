@@ -15,6 +15,13 @@ export interface Post {
   author: Author
   tags: Tag[]
   createdAt: number
+  cover: Cover | null
+  coverAlt: string
+}
+
+export interface Cover {
+  provider: string
+  url: string
 }
 
 export interface PostSummary {
@@ -74,9 +81,11 @@ export function getFakePostSummary (): PostSummary {
  * @returns {Post}
  */
 export function getFakePost ({
-  id = getUid()
+  id = getUid(),
+  cover = getFakeCover()
 } : {
-  id?: string
+  id?: string,
+  cover?: Cover
 } = {}): Post {
   return {
     id,
@@ -85,6 +94,22 @@ export function getFakePost ({
     body: 'Body of fake post.',
     author: getFakeAuthor(),
     tags: [getFakeTag()],
-    createdAt: Date.now()
+    createdAt: Date.now(),
+    cover,
+    coverAlt: 'Fake cover alt.'
+  }
+}
+
+/**
+ * Helper creates a fake cover.
+ * returns {Cover}
+ */
+export function getFakeCover({
+  url = 'http://fakeUrl.com',
+  provider = 'fake provider'
+} = {}) {
+  return {
+    url,
+    provider
   }
 }

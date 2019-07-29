@@ -47,6 +47,11 @@ export const GraphQLQueries = {
       tags {
         name
       }
+      cover {
+        provider
+        url
+      }
+      coverAlt
     }
   }
   `,
@@ -64,6 +69,11 @@ export const GraphQLQueries = {
         id
         name
       }
+      cover {
+        provider
+        url
+      }
+      coverAlt
       createdAt
     }
   }`

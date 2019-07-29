@@ -5,7 +5,7 @@ import {
 import getUid from '../uid';
 
 export interface Tag {
-  _id: string
+  id: string
   name: string
   weight: number
 }
@@ -29,7 +29,7 @@ export async function getTags(): Promise<Tag[]> {
 export function getFakeTag () {
   const uid = getUid()
   return {
-    _id: uid,
+    id: uid,
     name: `Fake Tag ${uid}`,
     weight: 1
   }

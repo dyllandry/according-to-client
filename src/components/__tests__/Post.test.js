@@ -88,7 +88,14 @@ describe('post component', () => {
     await wait(() => getByText(fakePost.title))
     const postDate = new Date(fakePost.createdAt)
     const dayMonthYear = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
-    expect(getByText(dayMonthYear)).toBeVisible()
+    expect(getByText(dayMonthYear, { exact: false })).toBeVisible()
+  })
+
+  it('renders post cover image', async () => {
+    getPostByIdStub.resolves(fakePost)
+    const { getByAltText } = render(<Post />)
+    await wait(() => getByAltText(fakePost.coverAlt))
+    expect(getByAltText(fakePost.coverAlt)).toBeVisible()
   })
   
 })

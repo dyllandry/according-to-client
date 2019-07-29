@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Post as PostType, getPostById } from '../models/Post'
+import { CmsUrlContext } from '../Context'
+import { getLocalProviderImageUrl } from '../getProviderImageUrl';
 const showdown = require('showdown')
 const converter = new showdown.Converter()
 
@@ -15,6 +17,8 @@ interface State {
 export default class Post extends Component<Props, State> {
 
   _isMounted = false
+
+  static contextType = CmsUrlContext
 
   constructor (props: Props) {
     super(props)
@@ -63,19 +67,30 @@ export default class Post extends Component<Props, State> {
       author,
       tags,
       cover,
-      createdAt
+      createdAt,
+      coverAlt
     } = this.state.post
 
     const postDate = new Date(createdAt)
     const dayMonthYear = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
 
+    const cmsUrl = this.context
+
     return (
       <div>
         <h1 data-testid='post-title'>{title}</h1>
-        <div>By: {author.displayName}</div>
+        { cover && (
+          <img 
+            src={ cover.provider === 'local'
+              ? getLocalProviderImageUrl(cmsUrl, cover.url)
+              : cover.url
+            }
+            alt={coverAlt}>
+          </img>
+        ) }
         <div>{`By: ${author.displayName} on ${dayMonthYear}`}</div>
         <ul>
-          {tags.map(tag => <li key={tag._id}>{`#${tag.name}`}</li>)}
+          {tags.map(tag => <li key={tag.id}>{`#${tag.name}`}</li>)}
         </ul>
         <p data-testid='post-description'>{description}</p>
         <div data-testid='post-body' dangerouslySetInnerHTML={{ __html: converter.makeHtml(body)}}></div>
