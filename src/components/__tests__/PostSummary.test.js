@@ -55,6 +55,12 @@ describe('post summary component', () => {
       expect(getByTestId('post-title')).toBeVisible()
     })
 
+    it('renders post cover alt text', () => {
+      const fakePostSummary = getFakePostSummary()
+      const { getByAltText } = renderWithRouter(<PostSummary {...fakePostSummary} />)
+      expect(getByAltText(fakePostSummary.coverAlt)).toBeVisible()
+    })
+
   })
   
 })

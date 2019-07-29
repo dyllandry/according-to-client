@@ -31,6 +31,8 @@ export interface PostSummary {
   createdAt: number
   tags: Tag[]
   Author: Author
+  cover: Cover | null
+  coverAlt: string
 }
 
 /**
@@ -72,7 +74,9 @@ export function getFakePostSummary (): PostSummary {
     description: 'Description of a fake post.',
     createdAt: Date.now(),
     tags: [getFakeTag()],
-    Author: getFakeAuthor()
+    Author: getFakeAuthor(),
+    cover: getFakeCover(),
+    coverAlt: 'fake cover alt'
   }
 }
 

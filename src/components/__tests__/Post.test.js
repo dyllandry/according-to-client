@@ -91,7 +91,7 @@ describe('post component', () => {
     expect(getByText(dayMonthYear, { exact: false })).toBeVisible()
   })
 
-  it('renders post cover image', async () => {
+  it('renders post cover alt text', async () => {
     getPostByIdStub.resolves(fakePost)
     const { getByAltText } = render(<Post />)
     await wait(() => getByAltText(fakePost.coverAlt))
