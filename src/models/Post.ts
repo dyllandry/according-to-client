@@ -25,7 +25,7 @@ export interface Cover {
 }
 
 export interface PostSummary {
-  _id: string
+  id: string
   title: string
   description: string
   createdAt: number
@@ -67,7 +67,7 @@ export async function getPostSummaries (): Promise<PostSummary[]> {
  */
 export function getFakePostSummary (): PostSummary {
   return {
-    _id: getUid(),
+    id: getUid(),
     title: 'Fake Post',
     description: 'Description of a fake post.',
     createdAt: Date.now(),

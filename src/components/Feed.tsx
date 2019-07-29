@@ -51,7 +51,7 @@ export default class Feed extends Component<Props, State> {
             ) : (
               <ul data-testid='feed-post-summaries-list'>
                 { this.state.posts.map(post => (
-                  <li key={post._id}>
+                  <li key={post.id}>
                     <PostSummary {...post}/>
                   </li>
                 ))}

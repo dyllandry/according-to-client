@@ -30,14 +30,14 @@ export function GraphQLRequest (
 export const GraphQLQueries = {
   getTags: `{
     tags {
-      _id
+      id
       name
       weight
     }
   }`,
   getPostSummaries: `{
     posts {
-      _id
+      id
       title
       description
       author {

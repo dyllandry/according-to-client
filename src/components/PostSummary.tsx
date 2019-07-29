@@ -3,14 +3,14 @@ import { PostSummary as PostSummaryType } from '../models/Post'
 import { Link } from 'react-router-dom';
 
 export default function PostSummary({
-  _id,
+  id,
   title,
   description
 } : PostSummaryType) {
   return (
     <div>
       <h3 data-testid='post-summary-title'>
-        <Link data-testid='post-summary-link' to={`/post/${_id}`}>
+        <Link data-testid='post-summary-link' to={`/post/${id}`}>
           {title}
         </Link>
       </h3>
