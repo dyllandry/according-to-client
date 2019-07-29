@@ -1,0 +1,29 @@
+.trending-tags {
+  margin-top: 24px;
+}
+
+.header {
+  margin: 0;
+}
+
+.list {
+  margin: 5px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list .tag {
+  margin-bottom: 5px;
+}
+
+.list .tag:last-child {
+  margin-bottom: 0px;
+}
+
+.tag:hover .hash {
+  transform: rotate(15deg)
+}
+
+.hash {
+  margin-right: 3px;
+}
