@@ -61,6 +61,24 @@ describe('post summary component', () => {
       expect(getByAltText(fakePostSummary.coverAlt)).toBeVisible()
     })
 
+    it('renders post date', async () => {
+      const fakePostSummary = getFakePostSummary()
+      const { getByText } = renderWithRouter(<PostSummary {...fakePostSummary} />)
+      const postDate = new Date(fakePostSummary.createdAt)
+      const expected = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
+      await wait(() => getByText(expected))
+      expect(getByText(expected)).toBeVisible()
+    })
+  
+    it('renders post author', async () => {
+      const fakePostSummary = getFakePostSummary()
+      const { getByText } = renderWithRouter(<PostSummary {...fakePostSummary} />)
+      console.log(fakePostSummary.author)
+      await wait(() => getByText(fakePostSummary.author.displayName))
+      expect(getByText(fakePostSummary.author.displayName)).toBeVisible()
+    })
+  
+
   })
   
 })

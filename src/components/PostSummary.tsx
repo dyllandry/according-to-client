@@ -9,21 +9,29 @@ export default function PostSummary({
   title,
   description,
   cover,
-  coverAlt
+  coverAlt,
+  createdAt,
+  author
 } : PostSummaryType) {
   const cmsUrl = useContext(CmsUrlContext)
+
+  const postDate = new Date(createdAt)
+  const dayMonthYear = `${postDate.getDate()}/${postDate.getMonth()+1}/${postDate.getFullYear()}`
+  
   return (
     <div>
+      { cover && cmsUrl && (
+        <img
+          src={ cover.provider === 'local' 
+            ? getLocalProviderImageUrl(cmsUrl, cover.url)
+            : cover.url
+          }
+          alt={ coverAlt }
+        />
+      )}
+      <div>{dayMonthYear}</div>
+      <div>{author && author.displayName}</div>
       <h3 data-testid='post-summary-title'>
-        { cover && cmsUrl && (
-          <img
-            src={ cover.provider === 'local' 
-              ? getLocalProviderImageUrl(cmsUrl, cover.url)
-              : cover.url
-            }
-            alt={ coverAlt }
-          />
-        )}
         <Link data-testid='post-summary-link' to={`/post/${id}`}>
           {title}
         </Link>
