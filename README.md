@@ -1,18 +1,23 @@
 # 🌎 According To
-**According To** (AT) is blog prototype where people can share their takes on world events. 
+**According To** (AT) is a prototype blog platform that attempts to reduce combative social tendencies by better framing each post as merely someone's opinion.
 
-However, first and foremost, it is a portfolio project of mine ([Dylan Landry](https://www.dylanlandry.com)) to demonstrate that I am competent with React and test driven development. 
+It is a portfolio project of mine ([Dylan Landry](https://www.dylanlandry.com)) to demonstrate that I am competent with...
+- React
+- Test driven development. 
 
-This is specifically the AT _client_.
+This is the AT _client_. For the AT _API_, visit the [AT API GitHub repository](https://github.com/dyllandry/according-to-api).
 
 ## Install
 - `npm install`
+
+## Dependencies
+This project depends on the [AT API](https://github.com/dyllandry/according-to-api) to work. The AT API respectively needs a local MongoDB database, too, so there's a bit of setup.
 
 ## Environment Variables
 Make sure to tweak the variables contained by the `.env` file to your environment's specifications.
 
 ## Testing
-A focus of this project is test driven development. That is, I only develop features after I have first defined adequate test for them. The tests are contained by `src` subdirectories named `__tests__`.
+A focus of this project is test driven development. The tests are contained by `src` subdirectories named `__tests__`.
 
 To test the application, run `npm run test`.
 
@@ -20,7 +25,9 @@ To test the application, run `npm run test`.
 
 ---
 
-The following is the create-react-app boiler readme.
+The following is the create-react-app boiler readme. 
+
+Au revior 👋!
 
 ---
 
