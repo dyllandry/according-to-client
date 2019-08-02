@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getLocalProviderImageUrl } from '../getProviderImageUrl';
 import { CmsUrlContext } from '../Context'
 import { getAuthorPictureAltText } from '../getAuthorPictureAltText'
+import AuthorImage from './AuthorImage'
 
 export default function PostSummary({
   id,
@@ -33,15 +34,11 @@ export default function PostSummary({
       <div>{dayMonthYear}</div>
       {author && (
         <div>
-          {author.picture && cmsUrl && (
-            <img 
-              src={author.picture.provider === 'local'
-                ? getLocalProviderImageUrl(cmsUrl, author.picture.url)
-                : author.picture.url
-              }
-              alt={getAuthorPictureAltText(author.displayName)}
-            />
-          )}
+          <AuthorImage 
+            name={author.displayName}
+            src={author.picture.url}
+            provider={author.picture.provider}
+          />
           <div>{author.displayName}</div>
         </div>
       )}
