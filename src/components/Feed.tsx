@@ -4,6 +4,7 @@ import {
   PostSummary as PostSummaryType
 } from '../models/Post';
 import PostSummary from '../components/PostSummary'
+import styles from './Feed.module.css'
 
 interface Props {}
 interface State {
@@ -40,7 +41,7 @@ export default class Feed extends Component<Props, State> {
 
   render() {
     return (
-      <div data-testid='feed'>
+      <div className={styles.feed} data-testid='feed'>
         <h2 data-testid="feed-header">Feed</h2>
         { 
           this.state.loadingPosts ? (
@@ -49,7 +50,7 @@ export default class Feed extends Component<Props, State> {
             this.state.posts.length === 0 ? (
               <div data-testid="feed-no-posts-to-display">No posts to display.</div>  
             ) : (
-              <ul data-testid='feed-post-summaries-list'>
+              <ul className={styles.list} data-testid='feed-post-summaries-list'>
                 { this.state.posts.map(post => (
                   <li key={post.id}>
                     <PostSummary {...post}/>
