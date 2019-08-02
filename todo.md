@@ -1,5 +1,6 @@
 # To Dos
 - [ ] Style feed
+- [ ] Display tags in PostSummary component
 - [ ] Add FollowedAuthors component
 
 ## Lingering Question
