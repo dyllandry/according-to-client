@@ -1,6 +1,8 @@
 # To Dos
 - [ ] Style feed
 - [ ] Display tags in PostSummary component
+- [ ] Restrict covers to a certain size to prevent reflow.
+  - Or is reflow really that bad?
 - [ ] Add FollowedAuthors component
 
 ## Lingering Question

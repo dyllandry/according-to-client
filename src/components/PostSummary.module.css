@@ -2,6 +2,15 @@
   max-width: 600px;
 }
 
+.post-summary:hover {
+  background-color: rgb(246, 246, 248);
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
 .author-date--flex {
   display: flex;
   justify-content: space-between;
@@ -41,5 +50,6 @@
 }
 
 .description {
-  margin: 10px 24px 24px 24px;
+  margin: 10px 24px 0 24px;
+  padding-bottom: 24px;
 }
