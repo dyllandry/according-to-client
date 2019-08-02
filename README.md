@@ -1,4 +1,7 @@
 # 🌎 According To
+
+![](according-to-client_2-8-19.png)
+
 **According To** (AT) is a prototype blog platform that attempts to reduce combative social tendencies by better framing each post as merely someone's opinion.
 
 It is a portfolio project of mine ([Dylan Landry](https://www.dylanlandry.com)) to demonstrate that I am competent with...
