@@ -41,8 +41,7 @@ export default class Feed extends Component<Props, State> {
 
   render() {
     return (
-      <div className={styles.feed} data-testid='feed'>
-        <h2 data-testid="feed-header">Feed</h2>
+      <div aria-label='feed' className={styles.feed} data-testid='feed'>
         { 
           this.state.loadingPosts ? (
             <div data-testid="feed-loading-message">Loading posts...</div>
@@ -52,7 +51,7 @@ export default class Feed extends Component<Props, State> {
             ) : (
               <ul className={styles.list} data-testid='feed-post-summaries-list'>
                 { this.state.posts.map(post => (
-                  <li key={post.id}>
+                  <li className={styles['list-item']} key={post.id}>
                     <PostSummary {...post}/>
                   </li>
                 ))}

@@ -15,9 +15,9 @@ describe('feed component', () => {
     renderWithRouter(<Feed />)
   })
 
-  it('renders feed header', () => {
-    const { getByTestId } = renderWithRouter(<Feed />)
-    expect(getByTestId('feed-header')).toBeVisible()
+  it('renders feed aria-label', () => {
+    const { getByLabelText } = renderWithRouter(<Feed />)
+    expect(getByLabelText('feed')).toBeVisible()
   })
 
   it('displays loading posts message at start', () => {

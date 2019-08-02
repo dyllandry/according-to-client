@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-right: 1px solid #ececec;
   min-width: 250px;
 }
 

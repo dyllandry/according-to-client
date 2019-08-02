@@ -1,8 +1,15 @@
 .feed {
   max-width: 600px;
+  border-right: 1px solid #ececec;
+  border-left: 1px solid #ececec;
 }
 
 .list {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  border-bottom: 12px solid #ececec;
 }
