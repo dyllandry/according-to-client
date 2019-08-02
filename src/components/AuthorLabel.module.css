@@ -1,0 +1,12 @@
+.author-label {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgb(236, 236, 236);
+  padding: 6px;
+  border-radius: 25px;
+}
+
+.name {
+  position: relative;
+  margin: 0 12px;
+}

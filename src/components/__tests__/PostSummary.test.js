@@ -12,7 +12,8 @@ import { getAuthorPictureAltText } from '../../getAuthorPictureAltText'
 describe('post summary component', () => {
 
   it('renders without crashing', () => {
-    renderWithRouter(<PostSummary />)
+    const fakePost = getFakePost()
+    renderWithRouter(<PostSummary {...fakePost}/>)
   })
 
   it('renders post description', () => {

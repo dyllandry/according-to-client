@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Post as PostType, getPostById } from '../models/Post'
 import { CmsUrlContext } from '../Context'
 import { getLocalProviderImageUrl } from '../getProviderImageUrl';
-import { getAuthorPictureAltText } from '../getAuthorPictureAltText';
+import AuthorLabel from './AuthorLabel';
 const showdown = require('showdown')
 const converter = new showdown.Converter()
 
@@ -89,18 +89,14 @@ export default class Post extends Component<Props, State> {
             alt={coverAlt}>
           </img>
         ) }
-        <div>{`By: ${author.displayName} on ${dayMonthYear}`}</div>
+        <div>{`${dayMonthYear}`}</div>
         {author && (
         <div>
-          {author.picture && cmsUrl && (
-            <img 
-              src={author.picture.provider === 'local'
-                ? getLocalProviderImageUrl(cmsUrl, author.picture.url)
-                : author.picture.url
-              }
-              alt={getAuthorPictureAltText(author.displayName)}
-            />
-          )}
+          <AuthorLabel 
+            name={author.displayName}
+            imageUrl={author.picture.url}
+            imageProvider={author.picture.provider}
+          />
         </div>
       )}
         <ul>
